@@ -22,12 +22,7 @@ public class GlobalHook {
 	public static void SetupScenarios() {
 		logger.info("GlobalHook -@BeforeAll");
 		RestAssured.baseURI="http://localhost:8081";
-		productRequest = new ProductRequest();
-        /*RequestSpecBuilder builder = new RequestSpecBuilder();
-        builder.addHeader("Authorization","Bearer aGFzaGRzZnNkZnNkZnNkZnNk");
-        builder.setContentType(ContentType.JSON);
-        requestSpec = builder.build();*/
-        
+		productRequest = new ProductRequest();        
 		RestAssured.requestSpecification = new RequestSpecBuilder()
 		        .setContentType(ContentType.JSON)
 		        .setAccept(ContentType.JSON)
