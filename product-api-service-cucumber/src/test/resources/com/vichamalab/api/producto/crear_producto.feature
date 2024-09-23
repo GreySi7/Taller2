@@ -3,7 +3,7 @@
 Requisito: Crear un nuevo producto usando la api /api/v1/product
 
 	Esquema del escenario: Crear un producto con éxito
-	Dada una API válida con url "/api/v1/product/" y formato "application/json"
+	Dada una API válida con ruta "/api/v1/product/" y formato "application/json"
 	Cuando se hace una petición "POST" con el nombre "<nombre>"
 	* y la descripción "<descripcion>"
 	* y el precio <precio>

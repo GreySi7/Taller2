@@ -23,11 +23,17 @@ public class GlobalHook {
 		logger.info("GlobalHook -@BeforeAll");
 		RestAssured.baseURI="http://localhost:8081";
 		productRequest = new ProductRequest();
-        RequestSpecBuilder builder = new RequestSpecBuilder();
-        builder.addHeader("User-Agent", com.vichamalab.api.producto.utils.Utils.USER_AGENT);
+        /*RequestSpecBuilder builder = new RequestSpecBuilder();
         builder.addHeader("Authorization","Bearer aGFzaGRzZnNkZnNkZnNkZnNk");
         builder.setContentType(ContentType.JSON);
-        requestSpec = builder.build();
+        requestSpec = builder.build();*/
+        
+		RestAssured.requestSpecification = new RequestSpecBuilder()
+		        .setContentType(ContentType.JSON)
+		        .setAccept(ContentType.JSON)
+		        .addHeader("User-Agent", com.vichamalab.api.producto.utils.Utils.USER_AGENT)
+		        .addHeader("Authorization","Bearer aGFzaGRzZnNkZnNkZnNkZnNk")
+		        .build();
 	}
 	
 	@AfterAll

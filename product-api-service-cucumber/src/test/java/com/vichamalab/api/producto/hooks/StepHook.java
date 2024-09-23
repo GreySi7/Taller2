@@ -11,11 +11,11 @@ public class StepHook {
 	
 	@BeforeStep
 	public void BeforeStep() {
-		logger.info("StepHook -@BeforeStep");
+		//logger.info("StepHook -@BeforeStep");
 	}
 	
 	@AfterStep
 	public void AfterStep() {
-		logger.info("StepHook -@AfterStep");
+		//logger.info("StepHook -@AfterStep");
 	}
 }
