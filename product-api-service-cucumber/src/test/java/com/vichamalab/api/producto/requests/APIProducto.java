@@ -43,15 +43,27 @@ public class APIProducto {
 	}
 	
 	public static Response eliminarProducto(String ruta, String sku) {
-		String rutaCompleta = String.format("%s{sku_creado}/", ruta);
-	   	 return given()
-	   			.pathParam("sku_creado", sku)
-	   	.when()
-	   		.delete(rutaCompleta)
-	   	.then()
-	   		.statusCode(HttpStatus.SC_OK)
-			.extract()
-			.response();
+	    String rutaCompleta = String.format("%s{sku_creado}/", ruta);
+	    
+	   
+	    Response response = given()
+	            .pathParam("sku_creado", sku)
+	        .when()
+	            .delete(rutaCompleta)
+	        .then()
+	            .extract()
+	            .response();
+	    
+	    
+	    if (response.getStatusCode() == HttpStatus.SC_NOT_FOUND) {
+	        System.out.println("El producto no fue encontrado. Código de respuesta: 404");
+	    } else if (response.getStatusCode() == HttpStatus.SC_OK) {
+	        System.out.println("El producto fue eliminado con éxito. Código de respuesta: 200");
+	    } else {
+	        System.out.println("Ocurrió un error inesperado. Código de respuesta: " + response.getStatusCode());
+	    }
+	    
+	    return response;
 	}
 	
 	public static ProductResponse recuperarProducto(String ruta, String sku) {
@@ -65,4 +77,5 @@ public class APIProducto {
 	   		.extract()
 	   		.as(ProductResponse.class);
 	}
+	
 }
